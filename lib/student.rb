@@ -30,8 +30,9 @@ class Student
     if self.id
       self.update
     else
-      sql = <<-SQL INSERT INTO students(name,grade)
-      VALUE (?,?)
+      sql = <<-SQL
+       INSERT INTO students(name,grade)
+       VALUE (?,?)
       SQL
         DB[:conn].execute(self.name,self.grade)
         @id = DB[:conn].execute("SELECT lat_insert_rowid() FROM students")[0][0]
