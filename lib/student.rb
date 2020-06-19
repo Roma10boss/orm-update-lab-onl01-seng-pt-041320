@@ -50,4 +50,12 @@ class Student
       student_new = self.new(row[0], row[1], row[2])
       student_new
     end
+
+    def find_by_name(name)
+
+    sql = "SELECT * FROM students WHERE name = ?"
+
+    result = DB[:conn].execute(sql, name)[0]
+    self.new_from_db(result)
+    end
 end
